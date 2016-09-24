@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>MATH 447: Numerical Analysis</h1>
+
+<ul>
+<li><a href="http://mason.gmu.edu/~wlee10">Home</a></li>
+<li><a href="http://mason.gmu.edu/~wlee10/project0.html">Project 0</a></li>
+<li><a href="http://mason.gmu.edu/~wlee10/project1.html">Project 1</a></li>
+</ul>
+
+<h2 align="center">Project 1: Kinematics of the Stewart platform</h2>
+
+<h3 align="center">Wonjun Lee</h3>
+<h3 align="center">James Trichilo</h3>
+<br>
+<h3>Introduction</h3>
+<img src="platform.gif" alt="Stewart" align="center" width="300" height="300">
+<p>Rotating Stewart Platform. Digital image. Wikipedia. N.p., n.d. Web. 04 Feb. 2014. </p>
+<p>http://upload.wikimedia.org/wikipedia/commons/a/a7/Hexapod_general_Anim.gif.</p>
+<p>As seen above, the Stewart Platform consists of six struts of variable length.  These struts can rotate to support various payloads.  These
+payloads include applications in flight simulation, carnival rides, and surgical procedures.  In our setting, the Stewart Platform was simplified to a
+2-Dimensional version.  In this 2-Dimensional setting, the platform is rotated about an angle, theta, and is support by three struts, of variable lengths.  
+In this project we had to solve for valid poses of the platform, given various initial conditions. </p>
+
+<h3>Part 1</h3>
+<p>L1=2, L2=L3=sqrt(2), gamma=pi/2, p1=p2=p3=sqrt(5)</p>
+<p>Using a bisecting method, solutions are found and they are close to -pi/4 and pi/4.</p>
+<p>theta=0.785397529602051, -0.785397529602051</p>
+<li><a href="http://mason.gmu.edu/~wlee10/pro1_matlab1.html">Matlab code</a></li>
+<br>
+
+<h3>Part 2&3</h3>
+
+<img src="pigraph.png" alt="Sine Graph" width="700" height="500"></p>
+
+<img src="pr1_3a.png" alt="Sine Graph 1" width="500" height="500">
+<img src="pr1_3b.png" alt="Sine Graph 2" width="500" height="500"></p>
+<br>
+
+<h3>Part 4</h3>
+<p> x1=5, (x2, y2) = (0,6), L1=L3=3, L2 = 3*sqrt(2), gamma=pi/4, p1=p2=5, p3=3</p>
+<img src="p1_4.png" alt="Sine Graph 3" width="700" height="500"></p>
+<img src="problem4part1" alt="Sine Graph 3" width="500" height="400">
+<img src="problem4part2" alt="Sine Graph 3" width="500" height="400"></p>
+<img src="problem4part3" alt="Sine Graph 3" width="500" height="400">
+<img src="problem4part4" alt="Sine Graph 3" width="500" height="400"></p>
+<br>
+<h3>Part 5</h3>
+<p> x1=5, (x2, y2) = (0,6), L1=L3=3, L2 = 3*sqrt(2), gamma=pi/4, p1=5, p2=7, p3=3</p>
+<img src="p1_5.png" alt="Sine Graph 3" width="700" height="500"></p>
+
+<p>Six poses:</p>
+<img src="triproject1.gif" alt="triproject1" width="700" height="500"></p>
+<br>
+<h3>Part 6</h3>
+<p>Roots graph:</p>
+<img src="rootspigraph.gif" alt="Computer man" width="700" height="500"></p>
+<p><b>p2=4</b></p>
+<p>theta = 1.3316, 1.7775</p>
+<img src="p1_6_p2_4_1.png" alt="Computer man" width="500" height="400">
+<img src="p1_6_p2_4_2.png" alt="Computer man" width="500" height="400"></p>
+<p><b>p2=8</b></p>
+<p>theta = 1.3316, 1.7775</p>
+<img src="p1_6_p2_8_1.png" alt="Computer man" width="500" height="400">
+<img src="p1_6_p2_8_2.png" alt="Computer man" width="500" height="400"></p>
+<p><b>p2=9</b></p>
+<p>theta = 1.3316, 1.7775</p>
+<img src="p1_6_p2_9_1.png" alt="Computer man" width="500" height="400">
+<img src="p1_6_p2_9_2.png" alt="Computer man" width="500" height="400"></p>
+<br>
+<h3>Conclusion</h3>
+<p>This project was a very enjoyable collaboration.  Our individual abilities complemented each other very well.  Much of the time, the problems were solved collectively, with plenty of discussion between the two of us.  The first moving graph was coded by Wonjun himself.  The other moving graph was brainstormed by the two of us, and was coded by Wonjun as well.  This was agreed upon by the two of us, as I (James), was responsible for typing the Project summary and verifying that the norms were correct in Problem 4.</p>
+<br>
+<h3>Matlab codes</h3>
+<li><a href="http://mason.gmu.edu/~wlee10/pro1_matlab2.html">bisect.m</a></li>
+<br>
+<h3>Reference</h3>
+<p>Sauer, T. Numerical Analysis 2nd ed. Pearson</p>
+</body>
+</html>
