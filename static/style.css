@@ -1,0 +1,61 @@
+body {
+	font-family: "Lato", sans-serif;
+	color: #2d3c49;
+	font-weight: 300;
+}
+
+.text-muted {
+	margin-left: 10px;
+	color: #7d97ad;
+	font-weight: 500;
+}
+
+.text-thin {
+	font-weight: 100;
+}
+
+.title-super {
+	font-size: 60px;
+}
+
+.title-logo {
+	margin-top: 30px;
+	width: 90px;
+}
+
+img {
+	width: 100%;
+}
+
+img.equation {
+	width: 50%;
+}
+
+hr {
+	border-style: solid;
+	border-color: #7d97ad;
+	border-width: 3px 0 0 0;
+	margin-top: 1%;
+	margin-bottom: 1%;
+}
+
+h2 {
+	margin-top: 1%;
+	margin-bottom: 1%;
+	font-size: 200%;
+}
+
+h3 {
+	font-size: 150%;
+}
+
+h4 {
+	font-size: 120%;
+}
+
+.border-box {
+	border-style: solid;
+	border-color: #7d97ad;
+	border-width: 1px 1px 1px 1px;
+	padding: 10px 10px 10px 10px;
+}

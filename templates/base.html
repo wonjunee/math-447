@@ -1,39 +1,65 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Lato:100,300" rel="stylesheet">
+  <link rel="stylesheet" href="/static/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="stylesheet" href="/static/responsive.css">
   <link type="text/css" rel="stylesheet" href="/static/main.css" />
-
-  <title>Wonjun - School Planning</title>
+  <title>Wonjun - Math 447 Projects</title>
 </head>
 
 <body>
-  <a href="/" class="main-title">
-    Wonjun's schedule
-  </a>
+  <div class="container">
+    <header class="row">
+      <div class="col-xs-12">
+        <a href="/" class="main-title">
+          Wonjun's Numerical Analysis Projects
+        </a>
+      </div>
+    </header>
 
-  <div class="login-area">
-    {% if user %}
-      {{user.name}} (<a class="login-link" href="/logout">logout</a>)
-    {% else %}
-      <a class="login-link" href="/login">login</a>
-      |
-      <a class="login-link" href="/signup">signup</a>
-    {% endif %}
-  </div>
-  <hr>
-  <div class="menu">
-    <a href="/" class="menu-item">
-      Home
-    </a>
-    <a href="/summary" class="menu-item">
-      Summary
-    </a>
-  </div>
-  <hr>
-  <br>
-  <div id="content">
-  {% block content %}
-  {% endblock %}
+    <div class="login-area">
+      {% if user %}
+        {{user.name}} (<a class="login-link" href="/logout">logout</a>)
+      {% else %}
+        <a class="login-link" href="/login">login</a>
+        |
+        <a class="login-link" href="/signup">signup</a>
+      {% endif %}
+    </div>
+    <hr>
+    <div class="menu">
+      <a href="/" class="menu-item">
+        Home
+      </a>
+      <a href="/project/0" class="menu-item">
+        Project 0
+      </a>
+      <a href="/project/1" class="menu-item">
+        Project 1
+      </a>
+      <a href="/project/2" class="menu-item">
+        Project 2
+      </a>
+      <a href="/project/3" class="menu-item">
+        Project 3
+      </a>
+      <a href="/project/4" class="menu-item">
+        Project 4
+      </a>
+      <a href="/project/5" class="menu-item">
+        Project 5
+      </a>
+    </div>
+    <hr>
+    <div id="content">
+    {% block content %}
+    {% endblock %}
+    </div>
   </div>
 </body>
 

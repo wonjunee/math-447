@@ -1,0 +1,555 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<br>
+
+<div class="row">
+   <div class="col-xs-12 text-center">
+      <h2>Project 2: GPS, Conditioning, and Nonlinear Least Squares</h2>
+   </div>
+</div>
+
+<div class="row">
+   <div class="col-xs-12 text-center">
+      <h3>Wonjun Lee</h3>
+      <h3>Dylan Kilpatrick</h3>
+   </div>
+</div>
+
+<br>
+<div class="row">
+   <div class="col-xs-12">
+      <h3>Introduction</h3>
+      <hr>
+      <div class="main-title">Write Something</div>
+   </div>
+</div>
+
+<div class="row">
+   <div class="col-xs-12">
+      <h3>Part 1</h3>
+      <hr>
+      <img src="https://github.com/wonjunee/math-447-files/blob/master/project%202/project22_files/matheq1.png?raw=true" alt="matheq1" class="equation">
+      <p>Equations above are used to find values of x, y, z, d assuming that Ai, Bi, Ci, and ti are known.</p>
+      <p>Multivariable Newton's Method will be used to find the solutions.</p>
+      <br>
+      <h4 class="text-center">Newton's Method in one dimension</h4>
+      <p>Newton's method can be used to find the solution of x where f(x)=0.</p>
+      <p>Assume a random x value where it is close to the solution.</p>
+      <p>Then, by assumption, the solution will be x + delta x where delta x is a small number.</p>
+      <p>Using Taylor series we get </p>
+
+      <img src="https://github.com/wonjunee/math-447-files/blob/master/project%202/project22_files/matheq2.png?raw=true" alt="matheq2" class="equation">
+      <p>We are not going to use f''(x) terms, so</p>
+      <img src="https://github.com/wonjunee/math-447-files/blob/master/project%202/project22_files/matheq3.png?raw=true" alt="matheq3" style="width:45%">
+
+      <h4 class="text-center">Multivariable Newton's Method</h4>
+      <p>In this method, n-dimensional vector will be used in equation.</p>
+      <img src="https://github.com/wonjunee/math-447-files/blob/master/project%202/project22_files/matheq4.png?raw=true" alt="matheq4" style="width:15%">
+      <p>Using the same equation from Newton's Method in one dimension, we get</p>
+      <img src="https://github.com/wonjunee/math-447-files/blob/master/project%202/project22_files/matheq5.png?raw=true" alt="matheq5" class="equation">
+      <p>DF(x) is Jacobian matrix where</p>
+      <img src="https://github.com/wonjunee/math-447-files/blob/master/project%202/project22_files/matheq6.png?raw=true" alt="matheq6" class="equation">
+      <p>Set F(x + delta x) to be zero.</p>
+      <img src="https://github.com/wonjunee/math-447-files/blob/master/project%202/project22_files/matheq7.png?raw=true" alt="matheq7" class="equation">
+
+      <p>Using the equation from multivariable Newton's method, a vector (x, y, z, d) can be calculated</p>
+      <p>Set initial values (x_0, y_0, z_0, d_0) = (0, 0, 6370, 0, 0) </p>
+      <p>Through multivariable Newton's method, we get (x, y, z, d) = (-41.7727, -16.7892, 0.0063701, -0.0032)</p>
+
+      <a href="http://mason.gmu.edu/~wlee10/pro2_matlab1.html" class="main-button">Matlab code</a>
+
+   </div>
+</div>
+<br>
+
+<div class="row">
+   <div class="col-xs-12">
+      <h3>Part 2</h3>
+      <hr>
+      <a href="http://mason.gmu.edu/~dkilpatr/Project1/Project2.html" class="main-button">Part 2 link - By Dylan Kilpatrick</a>
+   </div>
+</div>
+
+<div class="row">
+   <div class="col-xs-12">
+      <h3>Part 3</h3>
+      <hr>
+      <h4 class="text-center">Skipped</h4>
+   </div>
+</div>
+
+<div class="row">
+   <div class="col-xs-12">
+      <h3>Part 4</h3>
+      <hr>
+      <p>The matlab code from part 1 will be used to set up a tesst of the conditioning of the GPS problem.</p>
+      <p>First, we are going to define satelite positions (A_i, B_i, C_i) from spherical coordinates (rho, &#966__i, &#952__i)</p>
+      <img src="https://github.com/wonjunee/math-447-files/blob/master/project%202/project22_files/matheq8.png?raw=true" alt="matheq8" style="width:25%">
+      <p>where rho = 26570 km is fixed while 0 &lt;= &#966__i &lt;= pi/2 and 0 &lt;= &#952__i &lt;= 2pi for i= 1,2,3,4 are chosen arbitrarily.</p>
+      <p>&#966_ coordinate is defined in the uopper hemisphere.</p>
+      <p>In order to use Newton's method, we need initial values for x, y, z, d.</p>
+      <p>Set x = 0, y = 0, z = 6370, d = 0.0001.</p>
+      <p>Calculate the problem using</p>
+      <img src="https://github.com/wonjunee/math-447-files/blob/master/project%202/project22_files/matheq9.png?raw=true" alt="matheq9">
+      <p>Also define an error magnification factor specially tailored to the situation.</p>
+      <p>The atomic clocks aboard the satelites are correct up to about 10 nanoseconds.</p>
+      <p>Change the variable t_i by +10^-8 or -10^-8</p>
+      <p>Calculate the equation using new variables and find the error magnification factor and maximum position error.</p>
+      <p>The equation of error magnification factor is </p>
+      <img src="https://github.com/wonjunee/math-447-files/blob/master/project%202/project22_files/matheq10.png?raw=true" alt="matheq10" style="width:55%">
+
+      <br><br>
+
+      <h4 class="text-center">Unbunched Satelites examples</h4>
+      <div class="border-box">
+         <p>&#966_1 = 0.123247283847989</p>
+         <p>&#966_2 = 0.748792154310745</p>
+         <p>&#966_3 = 1.367802990103946</p>
+         <p>&#966_4 = 1.144802034200535</p>
+         <p>&#952_1 = 0.646498217700086</p>
+         <p>&#952_2 = 2.466849250419353</p>
+         <p>&#952_3 = 4.435587555635019</p>
+         <p>&#952_4 = 5.130785663472645</p>
+
+         <img src="https://github.com/wonjunee/math-447-files/blob/master/project%202/project22_files/figure3.png?raw=true" alt="figure3" >
+      </div>
+
+      <br>
+
+      <div class="border-box">
+         <p>&#966_1 = 0.009105446969157</p>
+         <p>&#966_2 = 1.092441384910635</p>
+         <p>&#966_3 = 0.508873227193201</p>
+         <p>&#966_4 = 1.379889408194267</p>
+         <p>&#952_1 = 0.570147721479078</p>
+         <p>&#952_2 = 2.880864302122009</p>
+         <p>&#952_3 = 4.425098485886051</p>
+         <p>&#952_4 = 4.940576502259765</p>
+
+
+         <img src="https://github.com/wonjunee/math-447-files/blob/master/project%202/project22_files/figure4.png?raw=true" alt="figure4" >
+      </div>
+
+      <br>
+
+      <a href="http://mason.gmu.edu/~wlee10/pro2_matlab4.html" class="main-button">Matlab code</a>
+   </div>
+</div>
+
+<div class="row">
+   <div class="col-xs-12">
+      <h3>Part 5</h3>
+      <hr>
+      <p>In part 5, repeat part 4 with a more tightly grouped set of satelites.</p>
+      <p>All &#966_ and &#952_ coordinates are chosen within 5 percent of one another.</p>
+      <p>Then calculate the maximum position error and error magnification factor.</p>
+
+      <br>
+
+      <div class="border-box">
+         <h4>Bunched Satelites examples</h4>
+         <p>&#966_1 = 0.785398163397448</p>
+         <p>&#966_2 = 0.806600883332093</p>
+         <p>&#966_3 = 0.812937455114990</p>
+         <p>&#966_4 = 0.823386597618045</p>
+         <p>&#952_1 = 3.141592653589793</p>
+         <p>&#952_2 = 3.166345281236617</p>
+         <p>&#952_3 = 3.265929685472240</p>
+         <p>&#952_4 = 3.185900207692994</p>
+
+         <img src="https://github.com/wonjunee/math-447-files/blob/master/project%202/project22_files/figure1.png?raw=true" alt="figure1" >
+
+      </div>
+
+      <br>
+
+      <div class="border-box">
+         <p>&#966_1 = 0.785398163397448</p>
+         <p>&#966_2 = 0.786191690633252</p>
+         <p>&#966_3 = 0.823546634919195</p>
+         <p>&#966_4 = 0.788624644636675</p>
+         <p>&#952_1 = 3.141592653589793</p>
+         <p>&#952_2 = 3.283351520830275</p>
+         <p>&#952_3 = 3.263962843138187</p>
+         <p>&#952_4 = 3.274731428628277</p>
+
+         <img src="https://github.com/wonjunee/math-447-files/blob/master/project%202/project22_files/figure2.png?raw=true" alt="figure2" >
+      </div>
+   </div>
+</div>
+
+<div class="row">
+   <div class="col-xs-12">
+      <h3>Part 6</h3>
+      <hr>
+      <p>This time, we will add 4 more satelites to the unbunched satelite configuration of part 4.</p><p>
+      </p><p>Since 4 satelites coordinates are added, we get 4 more equations.</p>
+      <p>Then Jacobian matrix becomes 8 by 4 matrix.</p>
+      <p>In order to make the matrix to be square, the matrix is multipied by its transpose.</p> 
+      <br>
+      <img src="https://github.com/wonjunee/math-447-files/blob/master/project%202/project22_files/matheq11.png?raw=true" alt="matheq11">
+      <br><br>
+      <p>The error magnification factor and maximum position error are found by repeating procedure from part 4 and part 5.</p>
+
+      <br>
+
+      <h4 class="text-center">Bunched Satelites Examples</h4>
+      <div class="border-box">
+         <p>&#966_1 =
+
+            1.356944539599547
+
+
+         &#966_2 =
+
+            1.413815388056074
+
+
+         &#966_3 =
+
+            1.412899230771438
+
+
+         &#966_4 =
+
+            1.417015775009770</p>
+
+
+         <p>&#966_5 =
+
+            1.378782447395593
+
+
+         &#966_6 =
+
+            1.365822403280660
+
+
+         &#966_7 =
+
+            1.365638589007187
+
+
+         &#966_8 =
+
+            1.386001076480033</p>
+
+
+         <p>&#952_1 =
+
+            3.511297386838514
+
+
+         &#952_2 =
+
+            3.611266614258809
+
+
+         &#952_3 =
+
+            3.638088447325427
+
+
+         &#952_4 =
+
+            3.548947020208038</p>
+
+
+         <p>&#952_5 =
+
+            3.637185199344338
+
+
+         &#952_6 =
+
+            3.605054227575258
+
+
+         &#952_7 =
+
+            3.659659944753279
+
+
+         &#952_8 =
+
+            3.638210989557449</p>
+
+         <img src="https://github.com/wonjunee/math-447-files/blob/master/project%202/project22_files/figure5.png?raw=true" alt="figure5">
+      </div>
+
+      <br>
+
+      <div class="border-box">
+
+         <p>&#966_1 =
+
+            0.918049679002073
+
+
+         &#966_2 =
+
+            0.950316908420695
+
+
+         &#966_3 =
+
+            0.957187058201774
+
+
+         &#966_4 =
+
+            0.953671599464011</p>
+
+
+         <p>&#966_5 =
+
+            0.931195811357795
+
+
+         &#966_6 =
+
+            0.932727435639100
+
+
+         &#966_7 =
+
+            0.933335506542304
+
+
+         &#966_8 =
+
+            0.924470322406893</p>
+
+
+         <p>&#952_1 =
+
+            4.161492850891034
+
+
+         &#952_2 =
+
+            4.257004625350429
+
+
+         &#952_3 =
+
+            4.316724698523939
+
+
+         &#952_4 =
+
+            4.350034707133330</p>
+
+
+         <p>&#952_5 =
+
+            4.262194654871914
+
+
+         &#952_6 =
+
+            4.206814384756107
+
+
+         &#952_7 =
+
+            4.233415716351475
+
+
+         &#952_8 =
+
+            4.312355715031637</p>
+
+         <img src="https://github.com/wonjunee/math-447-files/blob/master/project%202/project22_files/figure6.png?raw=true" alt="figure6">
+      </div>
+
+      <br>
+
+      <h4 class="text-center">Unbunched Satelites Examples</h4>
+
+      <div class="border-box">
+         <p>&#966_1 =
+
+            0.522335718898433
+
+
+         &#966_2 =
+
+            1.253932319088048
+
+
+         &#966_3 =
+
+            1.399072329881069
+
+
+         &#966_4 =
+
+            0.043361671848893</p>
+
+
+         <p>&#966_5 =
+
+            1.371624166496337
+
+
+         &#966_6 =
+
+            1.060205932469206
+
+
+         &#966_7 =
+
+            1.149325046446546
+
+
+         &#966_8 =
+
+            0.947523458533330</p>
+
+
+         <p>&#952_1 =
+
+            2.842378027662972
+
+
+         &#952_2 =
+
+            5.328313733350238
+
+
+         &#952_3 =
+
+            2.570346466796040
+
+
+         &#952_4 =
+
+            2.009630994356856</p>
+
+
+         <p>&#952_5 =
+
+            1.506503685051682
+
+
+         &#952_6 =
+
+            5.971601213037670
+
+
+         &#952_7 =
+
+            1.059150332086575
+
+
+         &#952_8 =
+
+            5.004816265769846</p>
+
+         <img src="https://github.com/wonjunee/math-447-files/blob/master/project%202/project22_files/figure7.png?raw=true" alt="figure7">
+      </div>
+
+      <br>
+
+      <div class="border-box">
+         <p>&#966_1 =
+
+            0.475946647894764
+
+
+         &#966_2 =
+
+            0.541621410520329
+
+
+         &#966_3 =
+
+            0.530353555614662
+
+
+         &#966_4 =
+
+            0.822740384035587</p>
+
+
+         <p>&#966_5 =
+
+            0.750480319309095
+
+
+         &#966_6 =
+
+            0.020455672318617
+
+
+         &#966_7 =
+
+            1.269145909780828
+
+
+         &#966_8 =
+
+            1.371165585457217</p>
+
+
+         <p>&#952_1 =
+
+            1.733981780208433
+
+
+         &#952_2 =
+
+            1.852141546095319
+
+
+         &#952_3 =
+
+            0.980352528769500
+
+
+         &#952_4 =
+
+            1.216414874459776</p>
+
+
+         <p>&#952_5 =
+
+            0.763290647781968
+
+
+         &#952_6 =
+
+            2.525173454755544
+
+
+         &#952_7 =
+
+            1.207017697726871
+
+
+         &#952_8 =
+
+            5.341813329442413</p>
+
+         <img src="https://github.com/wonjunee/math-447-files/blob/master/project%202/project22_files/figure8.png?raw=true" alt="figure8">
+      </div>
+
+      <br>
+
+      <h4 class="text-center">Error Magnification Factors With Various &#966 Values</h4>
+      <img src="https://github.com/wonjunee/math-447-files/blob/master/project%202/project22_files/errorgraph.gif?raw=true" alt="errorgraph">
+   </div>
+</div>
+
+<div class="row">
+   <div class="col-xs-12">
+      <h3>Reference</h3>
+      <hr>
+      <p>Sauer, T. Numerical Analysis 2nd ed. Pearson</p>
+   </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<br>
+
+<div class="row">
+	<div class="col-xs-12 text-center">
+		<h2>Project 3: Write a title!!</h2>
+	</div>
+</div>
+
+<div class="row">
+   <div class="col-xs-12 text-center">
+      <h3>Wonjun Lee</h3>
+   </div>
+</div>
+
+<br>
+
+
+<div class="row">
+   <div class="col-xs-12">
+		<h3>Problem 5</h3>
+		<hr>
+		<p> Forced damped equation </p>
+		<img src="./project3_files/pro3_7.png" alt="Sine Graph" width="230" height="50"><p></p>
+
+
+		<br>
+
+		<h4 class="text-center">Initial Angle from 0 to 3.14 (increase by 0.01).</h4> 
+		<h4 class="text-center">Graph of x-position. </h4>
+
+		<object width="100%"><param name="movie" value="//www.youtube.com/v/OgomYO8c8Jg?hl=en_US&amp;version=3&amp;rel=0"><param name="allowFullScreen" value="true"><param name="allowscriptaccess" value="always"><embed src="//www.youtube.com/v/OgomYO8c8Jg?hl=en_US&amp;version=3&amp;rel=0" type="application/x-shockwave-flash" width="100%" allowscriptaccess="always" allowfullscreen="true"></object>
+				
+		<p>The graph shows the movement of ball as from time 0 to 4000.</p> <p>As you can see from the video, as an initial angle changes from 0 to 3.14, there is no typical pattern of the graph.</p> 
+		<p>In other words, this forced damped pendulum is chaotic.</p> 
+		<p>However, when an initial angle is between .88 and .97, the graphs seem to be similar to each other.</p>
+		
+		<br>
+
+		<h4 class="text-center">Initial Angle: 0.93</h4>
+		<object width="100%"><param name="movie" value="//www.youtube.com/v/uBzjNKHOhUY?hl=en_US&amp;version=3&amp;rel=0"><param name="allowFullScreen" value="true"><param name="allowscriptaccess" value="always"><embed src="//www.youtube.com/v/uBzjNKHOhUY?hl=en_US&amp;version=3&amp;rel=0" type="application/x-shockwave-flash" width="100%" allowscriptaccess="always" allowfullscreen="true"></object>
+		<p>For this set of initial conditions, the distance the pendulum travels decreases as time goes on.</p> 
+		<p>The pendulum travels roughly half the distance each time. Each set of initial conditions end up reapeating the periodic behavior, so only 1 video is included.</p>
+	</div>
+</div>
+
+<div class="row">
+   <div class="col-xs-12">
+		<h3>Problem 6</h3>
+		<hr>
+		<p> In this problem, the damped pendulum is modified with oscillating pivot.</p>
+		<p> The equation is modified as </p>
+		<img src="./project3_files/pro3_1.png" alt="Sine Graph">
+		where A is the forcing strength.</p>
+		<p> Set d = 0.1 a nd the length of the pendulum to be 2.5 meters.</p>
+		<p>In the absence of forcing A = 0, the downward pendulum y = 0 is a stable equilibrium, and the inverted pendulum y = pi is an unstable equilibrium.</p>
+		<p> Two examples are shown below. </p>
+		<img src="./project3_files/oscillatingpivota0y0.png" alt="Sine Graph">
+		<img src="./project3_files/oscillatingpivota0ypi.png" alt="Sine Graph">
+		<p> Two figures above show the moving pendulum when y = 0 and y= pi. </p>
+		<p> Videos show two balls at the same position for a whole time. </p>
+		<p> Downward pendulum at the left is a stable equilibrium. </p>
+		<p> Inverted pendulum at the right is an unstable equilibrium. </p>
+		<p> In this problem, y is set as 3.1, and find the range of parameter A for which the inverted pendulum becomes stable.  </p>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-6">
+		<h4 class="text-center">Unstable inverted pendulum</h4>
+		<object width="100%"><param name="movie" value="//www.youtube.com/v/hXQiToL0Zds?hl=en_US&amp;version=3&amp;rel=0"><param name="allowFullScreen" value="true"><param name="allowscriptaccess" value="always"><embed src="//www.youtube.com/v/hXQiToL0Zds?hl=en_US&amp;version=3&amp;rel=0" type="application/x-shockwave-flash" width="100%" allowscriptaccess="always" allowfullscreen="true"></object>
+	</div>
+	<div class="col-xs-6">
+		<h4 class="text-center">Stable inverted pendulum</h4>
+		<object width="100%"><param name="movie" value="//www.youtube.com/v/igw8dsWswPE?version=3&amp;hl=en_US&amp;rel=0"><param name="allowFullScreen" value="true"><param name="allowscriptaccess" value="always"><embed src="//www.youtube.com/v/igw8dsWswPE?version=3&amp;hl=en_US&amp;rel=0" type="application/x-shockwave-flash" width="100%" allowscriptaccess="always" allowfullscreen="true"></object>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12">
+		<p> To find the range of parameter A, bisection method was used to find the value as accurate as possible. </p>
+		<p> Note that when the inverted pendulum is stable, then the ball never goes downward. </p>
+		<p> The function of a parameter A is defined in a matlab code that gives +1 or -1.</p>
+		<p> If the ball goes downward, then the function gives -1. </p>
+		<p> If the ball never goes downward throughout the whole time period, the function gives +1. </p>
+		<p> In conclusion, the range of parameter A was calculated as 18.333816137413876 &lt;= A &lt;= 25.677509645001138 </p>
+
+		<img src="./project3_files/pro3_twomovies.gif" alt="triproject1" width="800" height="310">
+
+		<br>
+		<h4 class="text-center">Matlab code</h4>
+		<a href="http://mason.gmu.edu/~wlee10/bisectpend.html" class="main-button">bisectpend.m</a>
+		<br>
+	</div>
+</div>
+
+
+
+<div class="row">
+   <div class="col-xs-12">
+		<h3>Problem 7</h3>
+		<hr>
+
+		<p> In this problem the range of parameter A was determined for which a stable downward equilibrium becomes unstable. </p>
+		<p> The method from problem 6 is used similar way except that if the ball goes upward the function gives -1 and if the ball stays downward, then it gives +1. </p>
+		<p> As a result, the smallest value of A is 14.727873288228963. </p>
+		<br>
+		<h4 class="text-center">Matlab code</h4>
+		<a href="http://mason.gmu.edu/~wlee10/bisectpend2.html" class="main-button">bisectpend2.m</a>
+	</div>
+</div>
+
+<div class="row">
+   <div class="col-xs-6">
+   		<h4 class="text-center">Unstable downward pendulum</h4>
+   		<object width="100%"><param name="movie" value="//www.youtube.com/v/WFquc3jOgoI?hl=en_US&amp;version=3&amp;rel=0"><param name="allowFullScreen" value="true"><param name="allowscriptaccess" value="always"><embed src="//www.youtube.com/v/WFquc3jOgoI?hl=en_US&amp;version=3&amp;rel=0" type="application/x-shockwave-flash" width="100%" allowscriptaccess="always" allowfullscreen="true"></object>
+   	</div>
+   	<div class="col-xs-6">
+		<h4 class="text-center">Stable downward pendulum</h4>
+		<object width="100%"><param name="movie" value="//www.youtube.com/v/WaU0EPDdYjo?hl=en_US&amp;version=3&amp;rel=0"><param name="allowFullScreen" value="true"><param name="allowscriptaccess" value="always"><embed src="//www.youtube.com/v/WaU0EPDdYjo?hl=en_US&amp;version=3&amp;rel=0" type="application/x-shockwave-flash" width="100%" allowscriptaccess="always" allowfullscreen="true"></object>
+	</div>
+</div>
+
+<h3>Reference</h3>
+<p>Sauer, T. Numerical Analysis 2nd ed. Pearson</p>
+
+{% endblock %}

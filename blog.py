@@ -183,6 +183,40 @@ class BlogFront(BlogHandler):
         else:
             self.redirect('/login')
 
+# Home
+class Home(BlogHandler):
+    def get(self):
+        self.render('home.html')
+
+# Project Pages
+class ProjectPage(BlogHandler):
+    def get(self,project_num):
+        self.render('project{}.html'.format(project_num))
+
+# # Project 1
+# class Project1(BlogHandler):
+#     def get(self):
+#         self.render('project1.html')
+
+# Project 1 - Matlab Code 1
+class Project1_matlab1(BlogHandler):
+    def get(self):
+        self.render('/project1/matlabcode1.html')
+
+# # Project 2
+# class Project2(BlogHandler):
+#     def get(self):
+#         self.render('project2.html')
+
+
+class BlogFront(BlogHandler):
+    def get(self):
+        if self.user:
+            posts = Post.all().order('-created')
+            self.render('index.html', posts = posts)
+        else:
+            self.redirect('/login')
+
 class PostPage(BlogHandler):
     def get(self, post_id):
         key = db.Key.from_path('Post', int(post_id), parent=blog_key())
@@ -194,37 +228,10 @@ class PostPage(BlogHandler):
 
         self.render("permalink.html", post = post)
 
-def checklist(todo):
-    gre_words = 0
-    gre_essays = 0
-    gre_verbal = 0
-    gre_math = 0
-    school_research = 0
-    sop = 0
-    other = 0
-    if "gre-words" in todo:
-        gre_words = 1
-    if "gre-essays" in todo:
-        gre_essays = 1
-    if "gre-verbal" in todo:
-        gre_verbal = 1
-    if "gre-math" in todo:
-        gre_math = 1
-    if "school-research" in todo:
-        school_research = 1
-    if "sop" in todo:
-        sop = 1
-    if "other" in todo:
-        other = 1
-    return [gre_words, gre_essays, gre_verbal, gre_math, school_research, sop, other]
-
 class NewPost(BlogHandler):
     def get(self):
         if self.user:
-            if self.user.name == "wonjunee":
-                self.render("newpost.html")
-            else:
-                self.redirect("/notallowed0")
+            self.render("newpost.html")
         else:
             self.redirect("/login")
 
@@ -618,40 +625,11 @@ class Deleted(BlogHandler):
             post_comment = "Comment"
         self.render('deleted.html', post_comment=post_comment)
 
-# A class for summary
-class Summary(BlogHandler):
-    def get(self):
-        if self.user:
-            posts = Post.all().order('-created')
-            gre_words = 0
-            gre_essays = 0
-            gre_verbal = 0
-            gre_math = 0
-            school_research = 0
-            sop = 0
-            other = 0
-            for post in posts:
-                gre_words += post.gre_words
-                gre_essays += post.gre_essays
-                gre_verbal += post.gre_verbal
-                gre_math += post.gre_math
-                school_research += post.school_research
-                sop += post.sop
-                other += post.other
-
-            self.render('summary.html', posts = posts, 
-                gre_words = gre_words,
-                gre_essays = gre_essays,
-                gre_verbal = gre_verbal,
-                gre_math = gre_math,
-                school_research = school_research,
-                sop = sop,
-                other = other)
-        else:
-            self.redirect('/login')
-
 app = webapp2.WSGIApplication([
-                               ('/?', BlogFront),
+                               # ('/?', BlogFront),
+                               ('/', Home),
+                               ('/project/([0-9])', ProjectPage),
+                               ('/project1/matlabcode1', Project1_matlab1),
                                ('/([0-9]+)', PostPage),
                                ('/newpost', NewPost),
                                ('/signup', Register),
@@ -665,6 +643,5 @@ app = webapp2.WSGIApplication([
                                ('/([0-9]+)/comment/([0-9]+)/delete', DeleteComment),
                                ('/notallowed([0-9])', NotAllowed),
                                ('/deleted([0-9])', Deleted),
-                               ('/summary', Summary)
                                ],
                               debug=True)
