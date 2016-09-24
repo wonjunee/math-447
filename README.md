@@ -1,4 +1,3 @@
-# TO DO LIST app
-This is the to do list app for my graduate school preparation.
-The website is here *https://wonjun-todo.appspot.com*
 # Portfolio webpage for Math 447
+
+The webpage contains multiple numerical analysis projects that I did in **Math 447: Numerical Analysis II** class in George Mason University.
