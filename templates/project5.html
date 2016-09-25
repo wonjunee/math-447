@@ -1,0 +1,262 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<br>
+
+<div class="row">
+  <div class="col-xs-12 text-center">
+    <h2 class="text-uppercase">Project 5: A Simple Audio Codec</h2>
+  </div>
+</div>
+
+<div class="row">
+   <div class="col-xs-12 text-center">
+      <h3>Wonjun Lee</h3>
+   </div>
+</div>
+
+<br>
+<div class="row">
+   <div class="col-xs-12">
+    <h3>Introduction</h3>
+    <hr>
+
+    <p> The rows of the n x 2n MDCT matrix M represent the length 2n fundamental interpolation functions.</p>
+    <p> The i th row is </p>
+
+    <img src="https://github.com/wonjunee/math-447-files/blob/master/project%205/figures/eq1.png?raw=true" alt="eq1" style="width:40%">
+
+    <p> for j = 0, 1, ... , 2n-1. </p>
+    <p> Thus the first row traverses a length pi interval, one-half period of cosine; the second row traverse 3/2 periods, and so on. </p>
+    <p> In the following problems, we will analyze a signal of frequency 64 Hz, given a sampling rate of Fs = 2^13. </p>
+    <p> The equation used for this analysis is </p>
+
+    <img src="https://github.com/wonjunee/math-447-files/blob/master/project%205/figures/eq2.png?raw=true" alt="eq2" style="width:20%">
+  </div>
+</div>
+
+<br>
+
+<div class="row">
+  <div class="col-xs-12">
+
+    <h3>Problem 1</h3>
+    <hr>
+    <p> In order to investigate the ability of MDCT to represent pure tones with a fixed number of bits,</p>
+    <p>4 bits per window of size <b>n = 32</b> was used. </p>
+    <p> Tones of frequency were set as multiples of 64 (=64f, f is an integer).</p>
+
+
+    	<p> 
+    <img src="https://github.com/wonjunee/math-447-files/blob/master/project%205/figures/problem1differentf.png?raw=true" alt="problem1differentf" style="width:120%; margin-left:-10%">
+
+
+    <p> The figure shows graphs of original with reconstructed sound from MDCT with different 'f' values. </p>
+    <p> Note that graphs with odd values of 'f' show the better result. </p>
+
+
+    	<p> 
+    <img src="https://github.com/wonjunee/math-447-files/blob/master/project%205/figures/problem1rmse.png?raw=true" alt="problem1rmse">
+
+    <p> The figure shows RMSE between original sound and reconstructed one. </p>
+  </div>
+</div>
+
+<br>
+
+<div class="row">
+  <div class="col-xs-12">
+    <h3>Problem 2</h3>
+    <hr>
+    <p> As seen in problem 1, RMSE gets larger when 'f' is an odd integer.</p>
+    <p> We are going to apply a "windowing function." </p>
+    <p> This function scales the input signal x smoothly to zero at each end of the window. </p>
+    <p> A common choice is to replace x_i with x_i*h_i, where</p>
+
+    <img src="https://github.com/wonjunee/math-447-files/blob/master/project%205/figures/eq0.png?raw=true" alt="eq0" style="width:30%">
+
+
+    <p> for a length 2n window, where i = 1,2, ... , 2n. </p>
+    <p> Then, before you combine windows into the decoded signal, multiply the second half of the h_i to w_2 and the first half to w_3. </p>
+
+    <img src="https://github.com/wonjunee/math-447-files/blob/master/project%205/figures/problem2differentf.png?raw=true" alt="problem2differentf" style="width:120%; margin-left:-10%"> 
+
+    <p> Note that the reconstructed audio using a windowing function shows a better result with an even integer of 'f.'</p>
+  </div>
+</div>
+
+<br>
+
+<div class="row">
+  <div class="col-xs-12">
+    <h4 class="text-center">RMSE (b = 4)</h4>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2"></div>
+  <div class="col-xs-8">
+    <table style="width:100%">
+      <tr>
+        <td>f</td>
+        <td>Without windowing function</td>
+        <td>With windowing function</td>		
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>0.024355974980366   </td>
+        <td>0.049835042561765</td>		
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>0.155953425494063   </td>
+        <td>0.039083653077519</td>		
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>0.010817826638199</td>
+        <td>0.066884453634951</td>		
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>0.161856766307043   </td>
+        <td>0.072180643197367</td>		
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>0.035270010824617   </td>
+        <td>0.066675892346141</td>		
+      </tr>
+      <tr>
+        <td>6</td>
+        <td> 0.156459028809657</td>
+        <td> 0.027193369087236</td>		
+      </tr>
+      <tr>
+        <td>7</td>
+        <td>0.012341872806899   </td>
+        <td> 0.071579002611762   </td>		
+      </tr>
+      <tr>
+        <td>8</td>
+        <td>0.146313093963032   </td>
+        <td>0.017695100476299   </td>		
+      </tr>
+      <tr>
+        <td>9</td>
+        <td>0.026053302489036</td>
+        <td>0.058258978773738</td>		
+      </tr>
+      <tr>
+        <td>10</td>
+        <td> 0.157160723995047</td>
+        <td>0.068598198840078</td>		
+      </tr>
+    </table>
+  </div>
+  <div class="col-xs-2"></div>
+</div>
+
+<br>
+
+<div class="row">
+  <div class="col-xs-2"></div>
+  <div class="col-xs-8">
+    <img src="https://github.com/wonjunee/math-447-files/blob/master/project%205/figures/problem3rmse.png?raw=true" alt="problem3rmse">
+  </div>
+  <div class="col-xs-2"></div>
+</div>
+
+<br>
+
+<div class="row">
+  <div class="col-xs-12">
+    <h3>Problem 3</h3>
+    <hr>
+    <p> In this problem, a new audio was made by combining 3 different values of 'f.' </p>
+    <p> Using same equation used in previous problems, the 'f' values used are 5/3, 3/2, 2/1. </p>
+
+    <br>
+
+    <h4 class="text-center">Without a windowing function</h4>
+
+    <img src="https://github.com/wonjunee/math-447-files/blob/master/project%205/figures/problem32differentf.png?raw=true" alt="problem32differentf" style="width:120%; margin-left:-10%">  
+
+    <h4 class="text-center">With a windowing function</h4>
+
+    <img src="https://github.com/wonjunee/math-447-files/blob/master/project%205/figures/problem3differentf.png?raw=true" alt="problem3differentf" style="width:120%; margin-left:-10%">
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2"></div>
+  <div class="col-xs-8 text-center">
+    <h4>Without a windowing function</h4>
+
+    <img src="https://github.com/wonjunee/math-447-files/blob/master/project%205/figures/problem31rmse.png?raw=true" alt="problem31rmse">
+    <h4>With a windowing function</h4>
+
+    <img src="https://github.com/wonjunee/math-447-files/blob/master/project%205/figures/problem32rmse.png?raw=true" alt="problem32rmse">
+  </div>
+  <div class="col-xs-2"></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <h3>Problem 4</h3>
+    <hr>
+    <img src="https://github.com/wonjunee/math-447-files/blob/master/project%205/figures/problem41differentf.png?raw=true" alt="problem41differentf" style="width:120%; margin-left:-10%"> 
+    <img src="https://github.com/wonjunee/math-447-files/blob/master/project%205/figures/problem42differentf.png?raw=true" alt="problem42differentf" style="width:120%; margin-left:-10%">
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-2"></div>
+  <div class="col-xs-8 text-center">
+    <img src="https://github.com/wonjunee/math-447-files/blob/master/project%205/figures/withwithout.png?raw=true" alt="withwithout">
+  </div>
+  <div class="col-xs-2"></div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12 text-center">
+    <h4> When b = 3 </h4>
+
+    <img src="https://github.com/wonjunee/math-447-files/blob/master/project%205/figures/withwithout2.png?raw=true" alt="withwithout2">
+
+    <h4> When b = 8 </h4>
+
+    <img src="https://github.com/wonjunee/math-447-files/blob/master/project%205/figures/withwithout3.png?raw=true" alt="withwithout3">
+
+    <h4> When b = 16 </h4>
+
+    <img src="https://github.com/wonjunee/math-447-files/blob/master/project%205/figures/withwithout4.png?raw=true" alt="withwithout4">
+
+    <h4> Original </h4>
+
+    <img src="https://github.com/wonjunee/math-447-files/blob/master/project%205/figures/withwithoutoriginal.png?raw=true" alt="withwithoutoriginal">
+  </div>
+</div>
+
+<br>
+
+<div class="row">
+  <div class="col-xs-12">
+    <h3>Matlab code</h3>
+    <hr>
+    <a href="https://raw.githubusercontent.com/wonjunee/math-447-files/master/project%205/project5_problem1.m" class="main-button">Code</a>
+  </div>
+</div>
+
+<br>
+
+<div class="row">
+   <div class="col-xs-12">
+    <h3>Reference</h3>
+    <hr>
+    <p>Sauer, T. Numerical Analysis 2nd ed. Pearson</p>
+  </div>
+</div>
+
+{% endblock %}
